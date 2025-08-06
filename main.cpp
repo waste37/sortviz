@@ -78,7 +78,6 @@ public:
     }
 };
 
-
 template <class T>
 class MergeSort : public SortingAlgorithm<T> {
 public:
@@ -116,9 +115,7 @@ restart:
         }
     }
 
-    bool Done() {
-        return m_Width >= m_Arr.size();
-    }
+    bool Done() { return m_Width >= m_Arr.size(); }
 
     std::vector<T> Array() const { return m_Arr; }
 private:
@@ -127,11 +124,8 @@ private:
     i32 m_Width, m_Left, m_N, m_I1, m_I2, m_K, m_Merging;
 };
 
-
-
 i32 main() {
     SeedRandom();
-
     std::vector<i32> array(N);
     for (i32 i = 0; i < N; ++i) array[i] = i+1;
 
@@ -200,21 +194,3 @@ i32 main() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
-
-i32 main2(void)
-{
-    std::vector<i32> arr(N);
-    SeedRandom();
-    puts("Didn't even create arr");
-
-    PrintArray(arr);
-    ShuffleArray(arr, N);
-    PrintArray(arr);
-
-    SortingAlgorithm<i32> *m = new MergeSort{arr};
-    puts("Instantiated m");
-    m->Sort();
-    PrintArray(m->Array());
-    return 0;
-}
-
